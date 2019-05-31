@@ -1,2 +1,2 @@
-// see gopkg.in/chanxuehong/wechat.v2/mp/datacube
+// see github.com/weikaishio/wechat/mp/datacube
 package datacube

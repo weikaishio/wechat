@@ -5,8 +5,8 @@ import (
 	"strconv"
 	"time"
 
-	"gopkg.in/chanxuehong/wechat.v2/mch/core"
-	"gopkg.in/chanxuehong/wechat.v2/util"
+	"github.com/weikaishio/wechat/mch/core"
+	"github.com/weikaishio/wechat/util"
 )
 
 // MicroPay 提交刷卡支付.

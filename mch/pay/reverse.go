@@ -1,8 +1,8 @@
 package pay
 
 import (
-	"gopkg.in/chanxuehong/wechat.v2/mch/core"
-	"gopkg.in/chanxuehong/wechat.v2/util"
+	"github.com/weikaishio/wechat/mch/core"
+	"github.com/weikaishio/wechat/util"
 )
 
 // Reverse 撤销订单.

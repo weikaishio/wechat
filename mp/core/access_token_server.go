@@ -11,8 +11,8 @@ import (
 	"time"
 	"unsafe"
 
-	"gopkg.in/chanxuehong/wechat.v2/internal/debug/api"
-	"gopkg.in/chanxuehong/wechat.v2/util"
+	"github.com/weikaishio/wechat/internal/debug/api"
+	"github.com/weikaishio/wechat/util"
 )
 
 // access_token 中控服务器接口.
