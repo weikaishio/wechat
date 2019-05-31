@@ -1,8 +1,8 @@
 package qrcode
 
 import (
-	"github.com/chanxuehong/wechat/mp/base"
-	"github.com/chanxuehong/wechat/mp/core"
+	"github.com/weikaishio/wechat/mp/base"
+	"github.com/weikaishio/wechat/mp/core"
 )
 
 // ShortURL 将一条长链接转成短链接.

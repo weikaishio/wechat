@@ -1,5 +1,5 @@
 # wechat SDK for golang
-https://github.com/chanxuehong/wechat
+https://github.com/weikaishio/wechat
 
 ## <font color="FF0000">招人啦</font>
 golang 后端的坑, 趣头条集团下面的创新团队, 现在步入正常轨道了, 前景很好.
@@ -28,7 +28,7 @@ golang 后端的坑, 趣头条集团下面的创新团队, 现在步入正常轨
 | mch  | 微信商户平台(微信支付) SDK   |
 
 ## 安装
-go get -u github.com/chanxuehong/wechat/...
+go get -u github.com/weikaishio/wechat/...
 
 ## 一点简单的帮助文档, 也许对你有作用
 * [微信公众号 SDK 核心 package](/mp/core/README.md)
@@ -51,11 +51,11 @@ http://localhost:8080/
 即可查看文档
 
 ## 捐助
-![微信支付](https://github.com/chanxuehong/wechat/blob/v2/weixin_pay.png)
-![支付宝](https://github.com/chanxuehong/wechat/blob/v2/alipay.png)
+![微信支付](https://github.com/weikaishio/wechat/blob/v2/weixin_pay.png)
+![支付宝](https://github.com/weikaishio/wechat/blob/v2/alipay.png)
 
 ## 捐助者列表
-[点击查看](https://github.com/chanxuehong/wechat/blob/v2/donors.md)
+[点击查看](https://github.com/weikaishio/wechat/blob/v2/donors.md)
 
 ## 授权(LICENSE)
 [wechat is licensed under the Apache Licence, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)

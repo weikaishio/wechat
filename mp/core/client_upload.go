@@ -8,9 +8,9 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/chanxuehong/wechat/internal/debug/api"
-	"github.com/chanxuehong/wechat/internal/debug/api/retry"
-	"github.com/chanxuehong/wechat/util"
+	"github.com/weikaishio/wechat/internal/debug/api"
+	"github.com/weikaishio/wechat/internal/debug/api/retry"
+	"github.com/weikaishio/wechat/util"
 )
 
 type MultipartFormField struct {

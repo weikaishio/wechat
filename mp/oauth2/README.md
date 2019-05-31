@@ -14,8 +14,8 @@ import (
 	"github.com/chanxuehong/rand"
 	"github.com/chanxuehong/session"
 	"github.com/chanxuehong/sid"
-	mpoauth2 "github.com/chanxuehong/wechat/mp/oauth2"
-	"github.com/chanxuehong/wechat/oauth2"
+	mpoauth2 "github.com/weikaishio/wechat/mp/oauth2"
+	"github.com/weikaishio/wechat/oauth2"
 )
 
 const (

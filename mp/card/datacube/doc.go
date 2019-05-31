@@ -1,2 +1,2 @@
-// see github.com/chanxuehong/wechat/mp/datacube
+// see github.com/weikaishio/wechat/mp/datacube
 package datacube

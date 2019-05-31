@@ -3,7 +3,7 @@ package material
 import (
 	"fmt"
 
-	"github.com/chanxuehong/wechat/mp/core"
+	"github.com/weikaishio/wechat/mp/core"
 )
 
 // 删除永久素材.

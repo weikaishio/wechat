@@ -5,8 +5,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/chanxuehong/wechat/mch/core"
-	wechatutil "github.com/chanxuehong/wechat/util"
+	"github.com/weikaishio/wechat/mch/core"
+	wechatutil "github.com/weikaishio/wechat/util"
 )
 
 // RefundQuery 查询退款.

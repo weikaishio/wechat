@@ -7,8 +7,8 @@ import (
 	"net/url"
 	"os"
 
-	"github.com/chanxuehong/wechat/internal/debug/api"
-	"github.com/chanxuehong/wechat/util"
+	"github.com/weikaishio/wechat/internal/debug/api"
+	"github.com/weikaishio/wechat/util"
 )
 
 // 二维码图片的URL, 可以通过此URL下载二维码 或者 在线显示此二维码.

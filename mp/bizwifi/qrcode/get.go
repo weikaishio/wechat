@@ -1,7 +1,7 @@
 package qrcode
 
 import (
-	"github.com/chanxuehong/wechat/mp/core"
+	"github.com/weikaishio/wechat/mp/core"
 )
 
 // 获取物料二维码
