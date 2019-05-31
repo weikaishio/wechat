@@ -16,9 +16,9 @@ func RequestToMap(req interface{}) map[string]string {
 	for i := 0; i < beanIndirectValueType.NumField(); i++ {
 		tag := beanIndirectValueType.Field(i).Tag
 		xmlTagStr := tag.Get("xml")
-		//if xmlTagStr == "xml" {
-		//	continue
-		//}
+		if xmlTagStr == "xml" {
+			continue
+		}
 		if beanIndirectValue.Field(i).IsValid() {
 			m1[xmlTagStr] = GetValue(beanIndirectValue.Field(i))
 		}
@@ -33,9 +33,9 @@ func ResponseFromMap(m2 map[string]string, resp interface{}) {
 	for i := 0; i < beanRespIndirectTypeValue.NumField(); i++ {
 		tag := beanRespIndirectTypeValue.Field(i).Tag
 		xmlTagStr := tag.Get("xml")
-		//if xmlTagStr == "xml" {
-		//	continue
-		//}
+		if xmlTagStr == "xml" {
+			continue
+		}
 		if val, has := m2[xmlTagStr]; has {
 			beanRespIndirectValue.Field(i).SetString(val)
 		}
