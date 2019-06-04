@@ -14,6 +14,7 @@ func ProfitSharingFinish(clt *core.Client, req *ProfitSharingFinishRequest) (res
 	if clt == nil {
 		return nil, errors.New("core.Client is nil")
 	}
+	m1["sign_type"] = core.SignType_HMAC_SHA256
 	m2, err := clt.PostXML(core.APIBaseURL()+"/secapi/pay/profitsharingfinish", m1)
 	if err != nil {
 		return nil, err
@@ -31,6 +32,7 @@ type ProfitSharingFinishRequest struct {
 	SubMchId      string `xml:"sub_mch_id"`     // 微信支付分配的子商户号
 	TransactionId string `xml:"transaction_id"` // 微信支付订单号
 	OutOrderNo    string `xml:"out_order_no"`   // 商户系统内部的分账单号，商户系统内部唯一，只能是数字、大小写字母_-|*@ ，同一分账单号多次请求等同一次。
+	Description   string `xml:"description"`    // 分账完结的原因描述
 	NonceStr      string `xml:"nonce_str"`      // 随机字符串，不长于32位。NOTE: 如果为空则系统会自动生成一个随机字符串。
 	SignType      string `xml:"sign_type"`      // 签名类型，默认为MD5，支持HMAC-SHA256和MD5。
 }

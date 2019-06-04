@@ -14,6 +14,7 @@ func ProfitSharingRemoveReceiver(clt *core.Client, req *ProfitSharingRemoveRecei
 	if clt == nil {
 		return nil, errors.New("core.Client is nil")
 	}
+	m1["sign_type"] = core.SignType_HMAC_SHA256
 	m2, err := clt.PostXML(core.APIBaseURL()+"/pay/profitsharingremovereceiver", m1)
 	if err != nil {
 		return nil, err

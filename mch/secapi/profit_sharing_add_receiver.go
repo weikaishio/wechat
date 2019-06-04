@@ -14,6 +14,7 @@ func ProfitSharingAddReceiver(clt *core.Client, req *ProfitSharingAddReceiverReq
 	if clt == nil {
 		return nil, errors.New("core.Client is nil")
 	}
+	m1["sign_type"] = core.SignType_HMAC_SHA256
 	m2, err := clt.PostXML(core.APIBaseURL()+"/pay/profitsharingaddreceiver", m1)
 	if err != nil {
 		return nil, err
@@ -22,6 +23,16 @@ func ProfitSharingAddReceiver(clt *core.Client, req *ProfitSharingAddReceiverReq
 	resp = &ProfitSharingAddReceiverResponse{}
 	ResponseFromMap(m2, resp)
 	return resp, nil
+}
+
+type ProfitSharingReceiver struct {
+	Type           string `json:"type,omitempty"`            // MERCHANT_ID：商户ID PERSONAL_WECHATID：个人微信号PERSONAL_OPENID：个人openid（由父商户APPID转换得到）PERSONAL_SUB_OPENID: 个人sub_openid（由子商户APPID转换得到）
+	Account        string `json:"account,omitempty"`         // 类型是MERCHANT_ID时，是商户ID  类型是PERSONAL_WECHATID时，是个人微信号  类型是PERSONAL_OPENID时，是个人openid  类型是PERSONAL_SUB_OPENID时，是个人sub_openid
+	Name           string `json:"name,omitempty"`            // 分账接收方类型是MERCHANT_ID时，是商户全称（必传） 分账接收方类型是PERSONAL_NAME 时，是个人姓名（必传） 分账接收方类型是PERSONAL_OPENID时，是个人姓名（选传，传则校验） 分账接收方类型是PERSONAL_SUB_OPENID时，是个人姓名（选传，传则校验）
+	Amount         int    `json:"amount,omitempty"`          // 分账金额，单位为分，只能为整数，不能超过原订单支付金额及最大分账比例金额
+	Description    string `json:"description,omitempty"`     // 分账的原因描述，分账账单中需要体现
+	RelationType   string `json:"relation_type,omitempty"`   // 子商户与接收方的关系。 本字段值为枚举： SERVICE_PROVIDER：服务商 STORE：门店 STAFF：员工 STORE_OWNER：店主 PARTNER：合作伙伴 HEADQUARTER：总部 BRAND：品牌方 DISTRIBUTOR：分销商 USER：用户 SUPPLIER：供应商 CUSTOM：自定义
+	CustomRelation string `json:"custom_relation,omitempty"` // 子商户与接收方具体的关系，本字段最多10个字。 当字段relation_type的值为CUSTOM时，本字段必填 当字段relation_type的值不为CUSTOM时，本字段无需填写
 }
 
 type ProfitSharingAddReceiverRequest struct {

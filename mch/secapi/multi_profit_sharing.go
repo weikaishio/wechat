@@ -14,6 +14,7 @@ func MultiProfitSharing(clt *core.Client, req *MultiProfitSharingRequest) (resp 
 	if clt == nil {
 		return nil, errors.New("core.Client is nil")
 	}
+	m1["sign_type"] = core.SignType_HMAC_SHA256
 	m2, err := clt.PostXML(core.APIBaseURL()+"/secapi/pay/multiprofitsharing", m1)
 	if err != nil {
 		return nil, err
@@ -36,10 +37,6 @@ type MultiProfitSharingRequest struct {
 	TransactionId string `xml:"transaction_id"` // 微信支付订单号
 	OutOrderNo    string `xml:"out_order_no"`   // 商户系统内部的分账单号，商户系统内部唯一，只能是数字、大小写字母_-|*@ ，同一分账单号多次请求等同一次。
 	Receivers     string `xml:"receivers"`      // 分账接收方列表，不超过50个json对象，可以设置出资子商户作为分账接受方
-	Type          string `xml:"type"`           // MERCHANT_ID：商户ID PERSONAL_WECHATID：个人微信号PERSONAL_OPENID：个人openid（由父商户APPID转换得到）PERSONAL_SUB_OPENID: 个人sub_openid（由子商户APPID转换得到）
-	Account       string `xml:"account"`        // 类型是MERCHANT_ID时，是商户ID 类型是PERSONAL_WECHATID时，是个人微信号 类型是PERSONAL_OPENID时，是个人openid 类型是PERSONAL_SUB_OPENID时，是个人sub_openid
-	Amount        int    `xml:"amount"`         // 分账金额，单位为分，只能为整数，不能超过原订单支付金额及最大分账比例金额
-	Description   string `xml:"description"`    // 分账的原因描述，分账账单中需要体现
 }
 
 type MultiProfitSharingResponse struct {

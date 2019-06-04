@@ -14,8 +14,9 @@ func ProfitSharingQuery(clt *core.Client, req *ProfitSharingQueryRequest) (resp 
 	if clt == nil {
 		return nil, errors.New("core.Client is nil")
 	}
+	m1["sign_type"] = core.SignType_HMAC_SHA256
 	m2, err := clt.PostXML(core.APIBaseURL()+"/pay/profitsharingquery", m1)
-	if err != nil {
+	if err != nil { //todo:SIGN_ERROR
 		return nil, err
 	}
 
