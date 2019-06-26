@@ -37,11 +37,41 @@ func ResponseFromMap(m2 map[string]string, resp interface{}) {
 			continue
 		}
 		if val, has := m2[xmlTagStr]; has {
-			beanRespIndirectValue.Field(i).SetString(val)
+			field:=beanRespIndirectValue.Field(i)
+			SetValue(val, &field)
+			//beanRespIndirectValue.Field(i).SetString(val)
 		}
 	}
 }
-
+func SetValue(val interface{}, value *reflect.Value) {
+	if !value.CanSet() {
+		return
+	}
+	switch value.Kind() {
+	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
+		var valInt int64
+		SetInt64FromStr(&valInt, ToString(val))
+		value.SetInt(valInt)
+	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
+		var valInt uint64
+		SetUint64FromStr(&valInt, ToString(val))
+		value.SetUint(valInt)
+	case reflect.Float32, reflect.Float64:
+		var valInt float64
+		SetFloat64FromStr(&valInt, ToString(val))
+		value.SetFloat(valInt)
+	case reflect.String:
+		value.SetString(ToString(val))
+	case reflect.Map:
+		//todo:SetValue4Map
+	case reflect.Bool:
+		var valBool bool
+		SetBoolFromStr(&valBool, ToString(val))
+		value.SetBool(valBool)
+	default:
+		value.Set(reflect.ValueOf(val))
+	}
+}
 func ToString(v interface{}) string {
 	switch value := v.(type) {
 	case int:
@@ -102,4 +132,95 @@ func GetValue(value reflect.Value) string {
 	default:
 		return ""
 	}
+}
+func SetInt64FromStr(ptr *int64, s string) error {
+	i, err := strconv.ParseInt(s, 0, 64)
+	if err == nil {
+		*ptr = i
+	}
+	return err
+}
+
+func SetInt32FromStr(ptr *int32, s string) error {
+	i, err := strconv.ParseInt(s, 0, 64)
+	if err == nil {
+		*ptr = int32(i)
+	}
+	return err
+}
+
+func SetIntFromStr(ptr *int, s string) error {
+	i, err := strconv.ParseInt(s, 0, 64)
+	if err == nil {
+		*ptr = int(i)
+	}
+	return err
+}
+
+func SetUint64FromStr(ptr *uint64, s string) error {
+	i, err := strconv.ParseUint(s, 0, 64)
+	if err == nil {
+		*ptr = i
+	}
+	return err
+}
+
+func SetUint32FromStr(ptr *uint32, s string) error {
+	i, err := strconv.ParseUint(s, 0, 64)
+	if err == nil {
+		*ptr = uint32(i)
+	}
+	return err
+}
+
+func SetUint16FromStr(ptr *uint16, s string) error {
+	i, err := strconv.ParseUint(s, 0, 64)
+	if err == nil {
+		*ptr = uint16(i)
+	}
+	return err
+}
+
+func SetUint8FromStr(ptr *uint8, s string) error {
+	i, err := strconv.ParseUint(s, 0, 64)
+	if err == nil {
+		*ptr = uint8(i)
+	}
+	return err
+}
+
+func SetUintFromStr(ptr *uint, s string) error {
+	i, err := strconv.ParseUint(s, 0, 64)
+	if err == nil {
+		*ptr = uint(i)
+	}
+	return err
+}
+
+func SetFloat32FromStr(ptr *float32, s string) error {
+	f, err := strconv.ParseFloat(s, 64)
+	if err == nil {
+		*ptr = float32(f)
+	}
+	return err
+}
+
+func SetFloat64FromStr(ptr *float64, s string) error {
+	f, err := strconv.ParseFloat(s, 64)
+	if err == nil {
+		*ptr = float64(f)
+	}
+	return err
+}
+
+func SetBoolFromStr(ptr *bool, s string) error {
+	if s == "" {
+		*ptr = false
+		return nil
+	}
+	b, err := strconv.ParseBool(s)
+	if err == nil {
+		*ptr = b
+	}
+	return err
 }
